@@ -1,10 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+   <h1>Марки транспорта</h1>
+   <hr/>
+{#    {% if is_paginated %}#}
+{#        {% include 'partial/pagination.html' %}#}
+{#    {% endif %}#}
+{#<form>#}
+{#  <div class="form-group">#}
+{#          {% regroup marks by car.name as car_list %}#}
+{#{% for car in car_list %}#}
+{#    <label for="exampleFormControlSelect1">{{ car.grouper }}</label>#}
+{#    <select class="form-control" id="exampleFormControlSelect1">#}
+{#        {% for ca in car.list %}#}
+{#          <option>{{ ca.name }}</option>#}
+{#        {% endfor %}#}
+{#            </select>#}
+{#{% endfor %}#}
+{#  </div>#}
+{#</form>#}
+<ul>
+{% for mark in cars %}
+    <li>{{ mark.name }}
+    <ul>
+        {% for car in mark.mark.all %}
+          <li>{{ car }}</li>
+        {% endfor %}
+    </ul>
+    </li>
+{% endfor %}
+</ul>
+
+
+
+
+    <a class="nav-item nav-link" href="{% url 'accounts:mark_add' %}">Добавить</a>
+{% endblock %}

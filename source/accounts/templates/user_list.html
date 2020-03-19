@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+   <h1>Пользователи</h1>
+   <hr/>
+{#    {% if is_paginated %}#}
+{#        {% include 'partial/pagination.html' %}#}
+{#    {% endif %}#}
+{#    {% if perms.webapp.view_order %}#}
+   {% for use in user %}
+           <div class="card border-primary mb-3" style="max-width: 18rem; text-align: center">
+  <div class="card-header"><h3>{{ use.first_name}}
+  {{ use.pk }}</h3><a href="{% url 'accounts:user_detail' use.pk %}"> Details...</a></p>
+  </div>
+</div>
+        {% endfor %}
+{% endblock %}

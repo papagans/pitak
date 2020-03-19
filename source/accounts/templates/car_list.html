@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+   <h1>Модели транспорта</h1>
+   <hr/>
+{#    {% if is_paginated %}#}
+{#        {% include 'partial/pagination.html' %}#}
+{#    {% endif %}#}
+{#    {% if perms.webapp.view_order %}#}
+   {% for cars in car %}
+           <div class="card border-primary mb-3" style="max-width: 18rem; text-align: center">
+  <div class="card-header"><h3>{{ cars.name}}
+
+{#  {{ cars.pk }}</h3><a href="{% url 'accounts:user_detail' use.pk %}"> Details...</a></p>#}
+  </div>
+</div>
+        {% endfor %}
+    <a class="nav-item nav-link" href="{% url 'accounts:car_add' %}">Добавить</a>
+{% endblock %}
